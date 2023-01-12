@@ -9,7 +9,7 @@ using System.Collections.Generic;
 /// An abstract implementation of <see cref="IPageContentStrategy"/> which works for a specific implementation of <see cref="IPublishedContent"/>.
 /// </summary>
 /// <typeparam name="TPublishedContent"></typeparam>
-public abstract class PageContentStrategy<TPublishedContent> : Strategy<IPublishedContent, IReadOnlyCollection<IPageComponentModel>?>, IPageContentStrategy where TPublishedContent : IPublishedContent, class
+public abstract class PageContentStrategy<TPublishedContent> : Strategy<IPublishedContent, IReadOnlyCollection<IPageComponentModel>?>, IPageContentStrategy where TPublishedContent : class, IPublishedContent
 {
     /// <inheritdoc />
     protected override bool ValidateInput(IPublishedContent? input)
