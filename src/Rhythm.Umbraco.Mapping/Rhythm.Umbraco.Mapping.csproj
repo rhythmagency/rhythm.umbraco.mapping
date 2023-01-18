@@ -10,6 +10,7 @@
     <Authors>rhythmagency</Authors>
     <PackageProjectUrl>https://github.com/rhythmagency/rhythm.umbraco.mapping</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rhythmagency/rhythm.umbraco.mapping</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
