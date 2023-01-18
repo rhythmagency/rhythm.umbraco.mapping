@@ -61,6 +61,7 @@ public abstract class BlockReferenceMapDefinition<TContent, TSettings, TOutput> 
     /// <inheritdoc />
     public virtual void DefineMaps(IUmbracoMapper mapper)
     {
+        mapper.Define<BlockGridItem<TContent, TSettings>, TOutput?>((block, mapperContext) => this.Map(block, mapperContext));
         mapper.Define<BlockListItem<TContent, TSettings>, TOutput?>((block, mapperContext) => this.Map(block, mapperContext));
     }
 

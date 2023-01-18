@@ -13,6 +13,7 @@ public abstract class BlockReferencePageComponentMapDefinition<TContent> : Block
     /// <inheritdoc />
     public override void DefineMaps(IUmbracoMapper mapper)
     {
+        mapper.Define<BlockGridItem<TContent>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
         mapper.Define<BlockListItem<TContent>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
     }
 
