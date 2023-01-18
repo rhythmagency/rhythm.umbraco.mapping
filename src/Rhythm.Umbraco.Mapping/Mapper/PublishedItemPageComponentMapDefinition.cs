@@ -16,10 +16,11 @@ public abstract class PublishedItemPageComponentMapDefinition<TModel> : Publishe
     }
 
     /// <summary>
-    /// Returns a collection of <see cref="IPageComponentModel"/> objects.
+    /// Allows this map definition to return multiple <see cref="IPageComponentModel"/> objects.
     /// </summary>
     /// <param name="components">The mapped collection.</param>
     /// <returns>A <see cref="PageComponentCollection"/> which represents a collection of <see cref="IPageComponentModel"/>.</returns>
+    /// <remarks>Returned <see cref="IPageComponentModel"/> objects will be merged into the <see cref="IUmbracoMapper" /> MapPageComponents return value. These object will not be nested in a collection object.</remarks>
     protected IPageComponentModel Collection(IEnumerable<IPageComponentModel> components)
     {
         return new PageComponentCollection(components);
