@@ -17,7 +17,19 @@ public abstract class BlockReferenceMapDefinition<TContent, TOutput> : IDiscover
     /// <inheritdoc />
     public virtual void DefineMaps(IUmbracoMapper mapper)
     {
+        mapper.Define<BlockGridItem<TContent>, TOutput?>((block, mapperContext) => this.Map(block, mapperContext));
         mapper.Define<BlockListItem<TContent>, TOutput?>((block, mapperContext) => this.Map(block, mapperContext));
+    }
+
+    /// <summary>
+    /// Maps the model to a <typeparamref name="TOutput"/>.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <param name="mapperContext">The mapper context.</param>
+    /// <returns>A <typeparamref name="TOutput"/>.</returns>
+    protected virtual TOutput? Map(BlockGridItem<TContent> model, MapperContext mapperContext)
+    {
+        return Map(model.Content, mapperContext);
     }
 
     /// <summary>
@@ -50,6 +62,17 @@ public abstract class BlockReferenceMapDefinition<TContent, TSettings, TOutput> 
     public virtual void DefineMaps(IUmbracoMapper mapper)
     {
         mapper.Define<BlockListItem<TContent, TSettings>, TOutput?>((block, mapperContext) => this.Map(block, mapperContext));
+    }
+
+    /// <summary>
+    /// Maps the model to a <typeparamref name="TOutput"/>.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <param name="mapperContext">The mapper context.</param>
+    /// <returns>A <typeparamref name="TOutput"/>.</returns>
+    protected virtual TOutput? Map(BlockGridItem<TContent, TSettings> model, MapperContext mapperContext)
+    {
+        return Map(model.Content, model.Settings, mapperContext);
     }
 
     /// <summary>

@@ -35,6 +35,7 @@ public abstract class BlockReferencePageComponentMapDefinition<TContent, TSettin
     /// <inheritdoc />
     public override void DefineMaps(IUmbracoMapper mapper)
     {
+        mapper.Define<BlockGridItem<TContent, TSettings>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
         mapper.Define<BlockListItem<TContent, TSettings>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
     }
 
