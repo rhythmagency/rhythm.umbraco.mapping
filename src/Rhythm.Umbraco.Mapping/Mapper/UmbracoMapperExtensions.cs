@@ -2,6 +2,7 @@
 
 using global::Umbraco.Cms.Core.Mapping;
 using Rhythm.Models.Common;
+using Rhythm.Umbraco.Mapping.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -224,11 +225,18 @@ public static partial class UmbracoMapperExtensions
             return Array.Empty<IPageComponentModel>();
         }
 
-        if (component is IHavePageComponents components)
+        var collection = new List<IPageComponentModel>();
+
+        if (component is not PageComponentCollection)
         {
-            return components.GetPageComponents();
+            collection.Add(component);
         }
 
-        return new[] { component };
+        if (component is IHavePageComponents components)
+        {
+            collection.AddRange(components.GetPageComponents());
+        }
+
+        return collection.ToArray();
     }
 }
