@@ -10,7 +10,7 @@ using System.Collections.Generic;
 /// </summary>
 /// <typeparam name="TPublishedItem">The type of published content or element.</typeparam>
 /// <remarks>This class uses <see cref="IPublishedElement"/> over <see cref="IPublishedContent"/> for content type composition support.</remarks>
-public abstract class PageContentStrategy<TPublishedItem> : Strategy<IPublishedElement, IReadOnlyCollection<IPageComponentModel>?>, IPageContentStrategy where TPublishedItem : class, IPublishedContent
+public abstract class PageContentStrategy<TPublishedItem> : Strategy<IPublishedElement, IReadOnlyCollection<IPageComponentModel>?>, IPageContentStrategy where TPublishedItem : class, IPublishedElement
 {
     /// <inheritdoc />
     protected override bool ValidateInput(IPublishedElement? input)
