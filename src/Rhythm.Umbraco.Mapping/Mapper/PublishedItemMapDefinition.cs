@@ -22,5 +22,5 @@ public abstract class PublishedItemMapDefinition<TModel, TOutput> : IDiscoverabl
     /// <param name="model">The model.</param>
     /// <param name="mapperContext">The mapper context.</param>
     /// <returns>A <typeparamref name="TOutput"/>.</returns>
-    protected abstract TOutput? Map(TModel model, MapperContext mapperContext);
+    public abstract TOutput? Map(TModel model, MapperContext mapperContext);
 }
