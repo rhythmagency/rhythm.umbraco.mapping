@@ -23,7 +23,7 @@ public abstract class PageContentStrategy<TPublishedItem> : Strategy<IPublishedE
     {
         if (input is not TPublishedItem content)
         {
-            return Array.Empty<IPageComponentModel>();
+            return EmptyCollection();
         }
 
         return Execute(content);
@@ -35,4 +35,13 @@ public abstract class PageContentStrategy<TPublishedItem> : Strategy<IPublishedE
     /// <param name="input">The input.</param>
     /// <returns>A readonly collection of <see cref="IPageComponentModel"/>.</returns>
     protected abstract IReadOnlyCollection<IPageComponentModel>? Execute(TPublishedItem input);
+
+    /// <summary>
+    /// Gets an empty page component collection.
+    /// </summary>
+    /// <returns>An empty page component collection.</returns>
+    protected IReadOnlyCollection<IPageComponentModel>? EmptyCollection()
+    {
+        return Array.Empty<IPageComponentModel>();
+    }
 }
