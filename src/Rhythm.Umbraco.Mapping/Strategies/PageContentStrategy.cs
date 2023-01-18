@@ -6,21 +6,22 @@ using Rhythm.Patterns.Strategies;
 using System.Collections.Generic;
 
 /// <summary>
-/// An abstract implementation of <see cref="IPageContentStrategy"/> which works for a specific implementation of <see cref="IPublishedContent"/>.
+/// An abstract implementation of <see cref="IPageContentStrategy"/> which works for a specific implementation of <see cref="IPublishedElement"/>.
 /// </summary>
-/// <typeparam name="TPublishedContent"></typeparam>
-public abstract class PageContentStrategy<TPublishedContent> : Strategy<IPublishedContent, IReadOnlyCollection<IPageComponentModel>?>, IPageContentStrategy where TPublishedContent : class, IPublishedContent
+/// <typeparam name="TPublishedItem">The type of published content or element.</typeparam>
+/// <remarks>This class uses <see cref="IPublishedElement"/> over <see cref="IPublishedContent"/> for content type composition support.</remarks>
+public abstract class PageContentStrategy<TPublishedItem> : Strategy<IPublishedElement, IReadOnlyCollection<IPageComponentModel>?>, IPageContentStrategy where TPublishedItem : class, IPublishedContent
 {
     /// <inheritdoc />
-    protected override bool ValidateInput(IPublishedContent? input)
+    protected override bool ValidateInput(IPublishedElement? input)
     {
-        return input is TPublishedContent;
+        return input is TPublishedItem;
     }
 
     /// <inheritdoc />
-    protected sealed override IReadOnlyCollection<IPageComponentModel>? Execute(IPublishedContent? input)
+    protected sealed override IReadOnlyCollection<IPageComponentModel>? Execute(IPublishedElement? input)
     {
-        if (input is not TPublishedContent content)
+        if (input is not TPublishedItem content)
         {
             return Array.Empty<IPageComponentModel>();
         }
@@ -29,9 +30,9 @@ public abstract class PageContentStrategy<TPublishedContent> : Strategy<IPublish
     }
 
     /// <summary>
-    /// Converts a <typeparamref name="TPublishedContent"/> to a <see cref="IReadOnlyCollection{IPageComponentModel}" />.
+    /// Converts a <typeparamref name="TPublishedItem"/> to a <see cref="IReadOnlyCollection{IPageComponentModel}" />.
     /// </summary>
     /// <param name="input">The input.</param>
     /// <returns>A readonly collection of <see cref="IPageComponentModel"/>.</returns>
-    protected abstract IReadOnlyCollection<IPageComponentModel>? Execute(TPublishedContent input);
+    protected abstract IReadOnlyCollection<IPageComponentModel>? Execute(TPublishedItem input);
 }

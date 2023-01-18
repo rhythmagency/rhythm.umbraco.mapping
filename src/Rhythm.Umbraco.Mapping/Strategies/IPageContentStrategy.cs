@@ -9,6 +9,6 @@ using System.Collections.Generic;
 /// A general contract for creating page content strategies.
 /// </summary>
 /// <remarks>Implementations will typically use <see cref="Strategy{TInput, TOutput}"/>.</remarks>
-public interface IPageContentStrategy : IStrategy<IPublishedContent, IReadOnlyCollection<IPageComponentModel>?>
+public interface IPageContentStrategy : IStrategy<IPublishedElement, IReadOnlyCollection<IPageComponentModel>?>
 {
 }
