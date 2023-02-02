@@ -11,7 +11,7 @@ using System.Collections.Generic;
 public sealed class FallbackPageContentStrategy : Strategy<IPublishedElement, IReadOnlyCollection<IPageComponentModel>>, IPageContentStrategy
 {
     /// <inheritdoc />
-    protected override IReadOnlyCollection<IPageComponentModel>? Execute(IPublishedElement? input)
+    protected override IReadOnlyCollection<IPageComponentModel>? Execute(IPublishedElement input)
     {
         return Array.Empty<IPageComponentModel>();
     }

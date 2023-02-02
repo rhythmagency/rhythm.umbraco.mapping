@@ -19,7 +19,7 @@ public abstract class PageContentStrategy<TPublishedItem> : Strategy<IPublishedE
     }
 
     /// <inheritdoc />
-    protected sealed override IReadOnlyCollection<IPageComponentModel>? Execute(IPublishedElement? input)
+    protected sealed override IReadOnlyCollection<IPageComponentModel>? Execute(IPublishedElement input)
     {
         if (input is not TPublishedItem content)
         {
