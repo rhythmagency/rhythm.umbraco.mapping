@@ -23,32 +23,32 @@ public static partial class UmbracoMapperExtensions
         return mapperContext.MapPageComponents(new[] { item });
     }
 
-    public static IReadOnlyCollection<IPageComponentModel> MapPageComponent(this MapperContext mapperContext, IPublishedElement item, IReadOnlyDictionary<string, object> context)
+    public static IReadOnlyCollection<IPageComponentModel> MapPageComponent(this MapperContext mapperContext, IPublishedElement? item, IReadOnlyDictionary<string, object> context)
     {
         return mapperContext.MapPageComponents(new[] { item }, context);
     }
 
-    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this IUmbracoMapper mapper, IReadOnlyCollection<IPublishedElement?> items)
+    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this IUmbracoMapper mapper, IReadOnlyCollection<IPublishedElement?>? items)
     {
         return MapPageComponents(mapper.MapOrDefault<IPageComponentModel?>, items);
     }
 
-    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this IUmbracoMapper mapper, IReadOnlyCollection<IPublishedElement?> items, IReadOnlyDictionary<string, object> context)
+    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this IUmbracoMapper mapper, IReadOnlyCollection<IPublishedElement?>? items, IReadOnlyDictionary<string, object> context)
     {
         return MapPageComponents((x) => { return mapper.MapOrDefault<IPageComponentModel?>(x, context); }, items);
     }
 
-    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this MapperContext mapperContext, IReadOnlyCollection<IPublishedElement?> items)
+    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this MapperContext mapperContext, IReadOnlyCollection<IPublishedElement?>? items)
     {
         return MapPageComponents(mapperContext.MapOrDefault<IPageComponentModel?>, items);
     }
 
-    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this MapperContext mapperContext, IReadOnlyCollection<IPublishedElement?> items, IReadOnlyDictionary<string, object> context)
+    public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this MapperContext mapperContext, IReadOnlyCollection<IPublishedElement?>? items, IReadOnlyDictionary<string, object> context)
     {
         return MapPageComponents((x) => { return mapperContext.MapOrDefault<IPageComponentModel?>(x, context); }, items);
     }
 
-    private static IReadOnlyCollection<IPageComponentModel> MapPageComponents(Func<IPublishedElement?, IPageComponentModel?> func, IReadOnlyCollection<IPublishedElement?> items)
+    private static IReadOnlyCollection<IPageComponentModel> MapPageComponents(Func<IPublishedElement, IPageComponentModel?> func, IReadOnlyCollection<IPublishedElement?>? items)
     {
         if (items is null)
         {
