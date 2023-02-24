@@ -12,7 +12,9 @@ public sealed class ActivitiesComposer : IComposer
 {
     /// <inheritdoc />
     public void Compose(IUmbracoBuilder builder)
-    {
-        builder.Services.AddTransient<IGetPageContent, GetPageContent>();
-    }
+	{
+		builder.Services.AddTransient<ICheckBlockReferenceVisibility, CheckBlockReferenceVisibility>();
+		builder.Services.AddTransient<IGetPageContent, GetPageContent>();
+		builder.Services.AddTransient<IGetVisibleBlockReferences, GetVisibleBlockReferences>();
+	}
 }
