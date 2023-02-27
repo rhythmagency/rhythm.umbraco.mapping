@@ -13,9 +13,9 @@ internal sealed class GetVisibleBlockReferences : IGetVisibleBlockReferences
 		_checkBlockReferenceVisibility = checkBlockReferenceVisibility;
 	}
 
-	public IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>> Execute(IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>>? input)
+	public IReadOnlyCollection<TReference> Execute<TReference>(IReadOnlyCollection<TReference>? input) where TReference : IBlockReference<IPublishedElement, IPublishedElement>
 	{
-		var items = new List<IBlockReference<IPublishedElement, IPublishedElement>>();
+		var items = new List<TReference>();
 
 		if (input is null)
 		{

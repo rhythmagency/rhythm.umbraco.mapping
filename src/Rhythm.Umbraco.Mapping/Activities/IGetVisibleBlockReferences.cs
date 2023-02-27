@@ -2,9 +2,9 @@
 
 using global::Umbraco.Cms.Core.Models.Blocks;
 using global::Umbraco.Cms.Core.Models.PublishedContent;
-using Rhythm.Patterns.Activities;
 using System.Collections.Generic;
 
-public interface IGetVisibleBlockReferences : IActivity<IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>>?, IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>>>
+public interface IGetVisibleBlockReferences
 {
+	IReadOnlyCollection<TReference> Execute<TReference>(IReadOnlyCollection<TReference>? input) where TReference : IBlockReference<IPublishedElement, IPublishedElement>;
 }
