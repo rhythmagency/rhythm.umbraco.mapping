@@ -227,14 +227,13 @@ public static partial class UmbracoMapperExtensions
 
         var collection = new List<IPageComponentModel>();
 
-        if (component is not PageComponentCollection)
+        if (component is PageComponentCollection componentCollection)
+        {
+            collection.AddRange(componentCollection.GetPageComponents());
+        }
+        else
         {
             collection.Add(component);
-        }
-
-        if (component is IHavePageComponents components)
-        {
-            collection.AddRange(components.GetPageComponents());
         }
 
         return collection.ToArray();
