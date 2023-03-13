@@ -14,7 +14,7 @@
             return mapper.MapPageComponents(new[] { block });
         }
 
-        public static IReadOnlyCollection<IPageComponentModel> MapPageComponent(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, IReadOnlyDictionary<string, object> context)
+        public static IReadOnlyCollection<IPageComponentModel> MapPageComponent(this IUmbracoMapper mapper, IBlockReference<IPublishedElement, IPublishedElement>? block, IReadOnlyDictionary<string, object?> context)
         {
             return mapper.MapPageComponents(new[] { block }, context);
         }
@@ -24,7 +24,7 @@
             return mapperContext.MapPageComponents(new[] { block });
         }
 
-        public static IReadOnlyCollection<IPageComponentModel> MapPageComponent(this MapperContext mapperContext, IBlockReference<IPublishedElement, IPublishedElement>? block, IReadOnlyDictionary<string, object> context)
+        public static IReadOnlyCollection<IPageComponentModel> MapPageComponent(this MapperContext mapperContext, IBlockReference<IPublishedElement, IPublishedElement>? block, IReadOnlyDictionary<string, object?> context)
         {
             return mapperContext.MapPageComponents(new[] { block }, context);
         }
@@ -34,7 +34,7 @@
             return MapPageComponents(mapper.MapOrDefault<IPageComponentModel>, blocks);
         }
 
-        public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this IUmbracoMapper mapper, IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>?>? blocks, IReadOnlyDictionary<string, object> context)
+        public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this IUmbracoMapper mapper, IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>?>? blocks, IReadOnlyDictionary<string, object?> context)
         {
             return MapPageComponents((x) => { return mapper.MapOrDefault<IPageComponentModel>(x, context); }, blocks);
         }
@@ -44,7 +44,7 @@
             return MapPageComponents(mapperContext.MapOrDefault<IPageComponentModel>, blocks);
         }
 
-        public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this MapperContext mapperContext, IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>?>? blocks, IReadOnlyDictionary<string, object> context)
+        public static IReadOnlyCollection<IPageComponentModel> MapPageComponents(this MapperContext mapperContext, IReadOnlyCollection<IBlockReference<IPublishedElement, IPublishedElement>?>? blocks, IReadOnlyDictionary<string, object?> context)
         {
             return MapPageComponents((x) => { return mapperContext.MapOrDefault<IPageComponentModel>(x, context); }, blocks);
         }

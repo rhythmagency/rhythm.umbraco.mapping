@@ -1,9 +1,9 @@
 ﻿namespace Rhythm.Umbraco.Mapping.Mapper;
 
 using global::Umbraco.Cms.Core.Mapping;
+using global::Umbraco.Cms.Core.Models.PublishedContent;
 using global::Umbraco.Extensions;
 using System.Collections.Generic;
-
 public static class MapperContextExtensions
 {
     /// <summary>Get value or default from the <see cref="MapperContext"/> Items dictionary.</summary>
@@ -52,9 +52,8 @@ public static class MapperContextExtensions
     /// </summary>
     /// <param name="context">The current context.</param>
     /// <param name="dictionary">The new dictionary of items.</param>
-    /// <param name="behavior">The behavior used when attempting to add to the current dictionary.</param>
     /// <returns>A <see cref="MapperContext"/>.</returns>
-    public static MapperContext AddItems(this MapperContext context, IReadOnlyDictionary<string, object> dictionary)
+    public static MapperContext AddItems(this MapperContext context, IReadOnlyDictionary<string, object?> dictionary)
     {
         foreach (var kvp in dictionary)
         {
@@ -71,7 +70,7 @@ public static class MapperContextExtensions
     /// <param name="kvp">The new item.</param>
     /// <param name="behavior">The behavior used when attempting to add to the current dictionary.</param>
     /// <returns>A <see cref="MapperContext"/>.</returns>
-    public static MapperContext AddItem(this MapperContext context, KeyValuePair<string, object> kvp)
+    public static MapperContext AddItem(this MapperContext context, KeyValuePair<string, object?> kvp)
     {
         context.Items.TryAdd(kvp.Key, kvp.Value);
 
@@ -84,12 +83,19 @@ public static class MapperContextExtensions
     /// <param name="context">The current context.</param>
     /// <param name="key">The new item key.</param>
     /// <param name="value">The new item value.</param>
-    /// <param name="behavior">The behavior used when attempting to add to the current dictionary.</param>
     /// <returns>A <see cref="MapperContext"/>.</returns>
-    public static MapperContext AddItem(this MapperContext context, string key, object value)
+    public static MapperContext AddItem(this MapperContext context, string key, object? value)
     {
         context.Items.TryAdd(key, value);
 
         return context;
+    }
+
+    /// <summary>Gets the current page from the <see cref="MapperContext"/>.</summary>
+    /// <param name="context">The current mapper context.</param>
+    /// <returns>A <see cref="IPublishedContent" /> if one is available. Or null if one was not assigned to the mapper context.</returns>
+    public static IPublishedContent? GetCurrentPage(this MapperContext context)
+    {
+        return context.GetItemValueOrDefault<IPublishedContent?>(MapperContextConstants.Keys.CurrentPage);
     }
 }

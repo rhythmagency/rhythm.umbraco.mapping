@@ -14,7 +14,7 @@ public static partial class UmbracoMapperExtensions
         return MapOrDefault(mapper.Map<TInput, TOutput>, input);
     }
 
-    public static TOutput? MapOrDefault<TInput, TOutput>(this IUmbracoMapper mapper, TInput? input, IReadOnlyDictionary<string, object> context)
+    public static TOutput? MapOrDefault<TInput, TOutput>(this IUmbracoMapper mapper, TInput? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<TInput, TOutput?> mapFunc = (item) =>
         {
@@ -32,7 +32,7 @@ public static partial class UmbracoMapperExtensions
         return MapCollectionOrEmpty(mapper.MapOrDefault<TInput, TOutput?>, input);
     }
 
-    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TInput, TOutput>(this IUmbracoMapper mapper, IReadOnlyCollection<TInput?>? input, IReadOnlyDictionary<string, object> context)
+    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TInput, TOutput>(this IUmbracoMapper mapper, IReadOnlyCollection<TInput?>? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<TInput, TOutput?> mapFunc = (item) =>
         {
@@ -50,7 +50,7 @@ public static partial class UmbracoMapperExtensions
         return MapOrDefault(mapper.Map<TOutput>, input);
     }
 
-    public static TOutput? MapOrDefault<TOutput>(this IUmbracoMapper mapper, object? input, IReadOnlyDictionary<string, object> context)
+    public static TOutput? MapOrDefault<TOutput>(this IUmbracoMapper mapper, object? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<object, TOutput?> mapFunc = (item) =>
         {
@@ -68,7 +68,7 @@ public static partial class UmbracoMapperExtensions
         return MapCollectionOrEmpty(mapper.MapOrDefault<TOutput?>, input);
     }
 
-    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TOutput>(this IUmbracoMapper mapper, IReadOnlyCollection<object?>? input, IReadOnlyDictionary<string, object> context)
+    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TOutput>(this IUmbracoMapper mapper, IReadOnlyCollection<object?>? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<object, TOutput?> mapFunc = (item) =>
         {
@@ -96,7 +96,7 @@ public static partial class UmbracoMapperExtensions
         return MapOrDefault(mapperContext.Map<TInput, TOutput>, input);
     }
 
-    public static TOutput? MapOrDefault<TInput, TOutput>(this MapperContext mapperContext, TInput? input, IReadOnlyDictionary<string, object> context)
+    public static TOutput? MapOrDefault<TInput, TOutput>(this MapperContext mapperContext, TInput? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<TInput, TOutput?> mapFunc = (item) =>
         {
@@ -113,7 +113,7 @@ public static partial class UmbracoMapperExtensions
         return MapCollectionOrEmpty(mapperContext.MapOrDefault<TInput?, TOutput>, input);
     }
 
-    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TInput, TOutput>(this MapperContext mapperContext, IReadOnlyCollection<TInput?>? input, IReadOnlyDictionary<string, object> context)
+    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TInput, TOutput>(this MapperContext mapperContext, IReadOnlyCollection<TInput?>? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<TInput, TOutput?> mapFunc = (item) =>
         {
@@ -141,7 +141,7 @@ public static partial class UmbracoMapperExtensions
         return MapOrDefault(mapperContext.Map<TOutput>, input);
     }
 
-    public static TOutput? MapOrDefault<TOutput>(this MapperContext mapperContext, object? input, IReadOnlyDictionary<string, object> context)
+    public static TOutput? MapOrDefault<TOutput>(this MapperContext mapperContext, object? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<object, TOutput?> mapFunc = (item) =>
         {
@@ -158,7 +158,7 @@ public static partial class UmbracoMapperExtensions
         return MapCollectionOrEmpty(mapperContext.MapOrDefault<TOutput>, input);
     }
 
-    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TOutput>(this MapperContext mapperContext, IReadOnlyCollection<object?>? input, IReadOnlyDictionary<string, object> context)
+    public static IReadOnlyCollection<TOutput> MapCollectionOrEmpty<TOutput>(this MapperContext mapperContext, IReadOnlyCollection<object?>? input, IReadOnlyDictionary<string, object?> context)
     {
         Func<object, TOutput?> mapFunc = (item) =>
         {

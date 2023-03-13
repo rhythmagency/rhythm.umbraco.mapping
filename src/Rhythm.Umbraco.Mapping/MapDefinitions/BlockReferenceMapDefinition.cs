@@ -1,4 +1,4 @@
-﻿namespace Rhythm.Umbraco.Mapping.Mapper;
+﻿namespace Rhythm.Umbraco.Mapping.MapDefinitions;
 
 using global::Umbraco.Cms.Core.Mapping;
 using global::Umbraco.Cms.Core.Models.Blocks;

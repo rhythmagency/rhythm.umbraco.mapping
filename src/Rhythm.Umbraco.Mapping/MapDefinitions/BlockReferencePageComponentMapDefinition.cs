@@ -1,4 +1,4 @@
-﻿namespace Rhythm.Umbraco.Mapping.Mapper;
+﻿namespace Rhythm.Umbraco.Mapping.MapDefinitions;
 
 using global::Umbraco.Cms.Core.Mapping;
 using global::Umbraco.Cms.Core.Models.Blocks;
@@ -13,8 +13,8 @@ public abstract class BlockReferencePageComponentMapDefinition<TContent> : Block
     /// <inheritdoc />
     public override void DefineMaps(IUmbracoMapper mapper)
     {
-        mapper.Define<BlockGridItem<TContent>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
-        mapper.Define<BlockListItem<TContent>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
+        mapper.Define<BlockGridItem<TContent>, IPageComponentModel?>((block, mapperContext) => Map(block, mapperContext));
+        mapper.Define<BlockListItem<TContent>, IPageComponentModel?>((block, mapperContext) => Map(block, mapperContext));
     }
 
     /// <summary>
@@ -37,8 +37,8 @@ public abstract class BlockReferencePageComponentMapDefinition<TContent, TSettin
     /// <inheritdoc />
     public override void DefineMaps(IUmbracoMapper mapper)
     {
-        mapper.Define<BlockGridItem<TContent, TSettings>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
-        mapper.Define<BlockListItem<TContent, TSettings>, IPageComponentModel?>((block, mapperContext) => this.Map(block, mapperContext));
+        mapper.Define<BlockGridItem<TContent, TSettings>, IPageComponentModel?>((block, mapperContext) => Map(block, mapperContext));
+        mapper.Define<BlockListItem<TContent, TSettings>, IPageComponentModel?>((block, mapperContext) => Map(block, mapperContext));
     }
 
     /// <summary>
