@@ -98,4 +98,13 @@ public static class MapperContextExtensions
     {
         return context.GetItemValueOrDefault<IPublishedContent?>(MapperContextConstants.Keys.CurrentPage);
     }
+
+    /// <summary>Gets the current page from the <see cref="MapperContext"/> as a given type.</summary>
+    /// <param name="context">The current mapper context.</param>
+    /// <typeparam name="TPublishedContent">The type of the current page.</typeparam>
+    /// <returns>A <typeparamref name="TPublishedContent"/> if one is available. Or null if one was not assigned to the mapper context.</returns>
+    public static TPublishedContent? GetCurrentPage<TPublishedContent>(this MapperContext context) where TPublishedContent : class, IPublishedElement
+    {
+        return context.GetCurrentPage() as TPublishedContent;
+    }
 }
